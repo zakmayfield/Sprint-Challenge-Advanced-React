@@ -31,3 +31,19 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+
+.playersBigBox{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.playerBox{
+  border: 1px solid black;
+  margin: 1vh 1vw;
+  padding: 1vh 1vw;
+}
