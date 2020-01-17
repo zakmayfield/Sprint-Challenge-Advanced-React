@@ -28,13 +28,22 @@ const Players = ({ players, searchInput, handleChange }) => {
 
   return(
     <div>
+
       <div
         onClick={toggleMode}
         className={darkMode ? 'toggle toggled' : 'toggle'}
         className="darkModeToggle"
+        data-testid="darkModeBtn"
       >
         Dark Mode
       </div>
+
+      <div>
+        <div data-testid="dmEnabler">
+          {darkMode ? <p>Dark Mode Enabled</p> : <p>Dark Mode Not Enabled</p>}
+        </div>
+      </div>
+
       <div>
         <input
           type="text"
@@ -43,6 +52,7 @@ const Players = ({ players, searchInput, handleChange }) => {
           onChange={handleChange}
         />
       </div>
+
       <div>
         {/* {
           updatedSearch.map(player => {
@@ -56,7 +66,9 @@ const Players = ({ players, searchInput, handleChange }) => {
           })
         } */}
       </div> 
+
       <PlayerCard players={players} />
+
     </div>
   )
 }
