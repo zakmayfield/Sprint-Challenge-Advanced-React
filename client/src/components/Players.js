@@ -16,9 +16,9 @@ const Players = ({ players, searchInput, handleChange }) => {
       })
     )
 
-    console.log(updatedSearch)
+    console.log('Search Results', updatedSearch.length, updatedSearch)
 
-  }, [searchInput])
+  }, [searchInput, players])
 
 
   const toggleMode = e => {
@@ -53,19 +53,19 @@ const Players = ({ players, searchInput, handleChange }) => {
         />
       </div>
 
-      <div>
-        {/* {
+      {/* <div>
+       {
           updatedSearch.map(player => {
             return(
               <div key={player.id} className="playerBox">
                 <h4>{player.name}</h4>
                 <p><span className="italic">{player.country}</span></p>
                 <p>Google Searches: <span className="bold">{player.searches}</span></p>
-              </div>
+              </div> 
             )
           })
-        } */}
-      </div> 
+        } 
+      </div>  */}
 
       <PlayerCard players={players} />
 
