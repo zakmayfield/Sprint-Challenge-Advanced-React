@@ -1,26 +1,43 @@
 import React from 'react';
-import logo from './logo.svg';
+import axios from 'axios';
+import Players from './components/Players';
 import './App.css';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+  state={
+    players: [],
+    searchInput: ''
+  };
+
+  componentDidMount(){
+    axios.get('http://localhost:5000/api/players')
+      .then(res => {
+        const people = res.data
+        this.setState({
+          players: people
+        })
+      })
+      .catch(err => {
+        console.log('Error in CDM', err)
+      })
+  };
+
+  handleChange = e => {
+    this.setState({
+      searchInput: e.target.value
+    })
+  }
+
+  render(){
+    return(
+      <div className="App">
+        <div id="appSub" data-testid="subApp">
+          <h2>Womens World Cup players by Google searches</h2>
+          <Players players={this.state.players} searchInput={this.state.searchInput} handleChange={this.handleChange} />
+        </div>
+      </div>
+    )
+  }
 }
 
 export default App;
