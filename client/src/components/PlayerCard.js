@@ -8,8 +8,8 @@ const PlayerCard = ({ players}) => {
           return(
             <div key={person.id} className="playerBox">
               <h4>{person.name}</h4>
-              <p>{person.country}</p>
-              <p>{person.searches}</p>
+              <p><span className="italic">{person.country}</span></p>
+              <p>Google Searches: <span className="bold">{person.searches}</span></p>
             </div>
           )
         })
